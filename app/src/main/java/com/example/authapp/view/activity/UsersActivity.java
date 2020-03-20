@@ -1,4 +1,4 @@
-package com.example.authapp.view;
+package com.example.authapp.view.activity;
 
 import android.os.Bundle;
 
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.authapp.R;
 import com.example.authapp.databinding.ActivityUsersBinding;
 import com.example.authapp.handler.UserHandler;
+import com.example.authapp.view.adapter.UsersAdapter;
 import com.example.authapp.viewmodel.UsersViewModel;
 
 import java.util.ArrayList;

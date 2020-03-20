@@ -2,4 +2,7 @@
     <string name="app_name">AuthApp</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="regular">Regular</string>
+    <string name="favourite">Favourite</string>
+    <string name="auth_application">Auth Application</string>
 </resources>

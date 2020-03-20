@@ -1,4 +1,4 @@
-package com.example.authapp.view;
+package com.example.authapp.view.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -19,7 +19,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
     private List<String> userData;
     private LayoutInflater layoutInflater;
 
-    UsersAdapter(Context mContext, List<String> userData){
+    public UsersAdapter(Context mContext, List<String> userData){
         this.userData = userData;
         layoutInflater = LayoutInflater.from(mContext);
     }
@@ -41,12 +41,12 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
         return userData.size();
     }
 
-    void addAllUsers(List<String> users){
+    public void addAllUsers(List<String> users){
         userData.addAll(users);
         notifyDataSetChanged();
     }
 
-    void addOneUser(){
+    public void addOneUser(){
         userData.add("Karan");
         notifyDataSetChanged();
     }

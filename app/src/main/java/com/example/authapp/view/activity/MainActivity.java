@@ -1,4 +1,4 @@
-package com.example.authapp.view;
+package com.example.authapp.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;

@@ -1,4 +1,4 @@
-package com.example.authapp.view;
+package com.example.authapp.view.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
