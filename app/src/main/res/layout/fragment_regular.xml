@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--<layout>-->
-<!--<data>-->
-<!--    <variable-->
-<!--        name="viewModel"-->
-<!--        type="com.example.authapp.viewmodel.RegularViewModel" />-->
+<layout>
+<data>
+    <variable
+        name="viewModel"
+        type="com.example.authapp.viewmodel.RegularViewModel" />
 
-<!--    <variable-->
-<!--        name="handler"-->
-<!--        type="com.example.authapp.handler.RegularHandler" />-->
-<!--</data>-->
+    <variable
+        name="handler"
+        type="com.example.authapp.handler.RegularHandler" />
+</data>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvRegularUsers"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAdd"
@@ -29,5 +24,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRegularUsers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-<!--</layout>-->
+</layout>

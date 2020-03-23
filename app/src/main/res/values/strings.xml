@@ -5,4 +5,20 @@
     <string name="regular">Regular</string>
     <string name="favourite">Favourite</string>
     <string name="auth_application">Auth Application</string>
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="select_gender">Select Gender</string>
+    <string name="country">Country</string>
+
+    <string-array name="countries">
+        <item>Select Country</item>
+        <item>India</item>
+        <item>USA</item>
+        <item>Australia</item>
+        <item>Canada</item>
+        <item>Japan</item>
+    </string-array>
+
 </resources>
