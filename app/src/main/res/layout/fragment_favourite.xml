@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
@@ -40,10 +39,9 @@
         app:layout_constraintTop_toBottomOf="@+id/etName" />
 
 
+    <!-- Questionable, explore Inverse Binding and 2 way-->
     <Spinner
         android:id="@+id/spinnerCountry"
-        android:background="@drawable/background_spinner_arrow"
-        android:entries="@array/countries"
         android:onItemSelected="@{(parent,view,pos,id)->viewModel.selectCountry(parent,view,pos,id)}"
         android:layout_width="match_parent"
         android:layout_height="50dp"
