@@ -58,9 +58,9 @@ public class FilteredUserActivity extends AppCompatActivity {
     private void hideShowFragment(Fragment currentFragment) {
         if (currentFragment != activeFragment) {
             int[] animArray = {R.anim.slide_in_right, R.anim.slide_out_right};
-            if (activeFragment != null && activeFragment.getTag()!=null) {
-                int currentValue = Integer.valueOf(currentFragment.getTag());
-                int activeValue = Integer.valueOf(activeFragment.getTag());
+            if (activeFragment != null && activeFragment.getTag()!=null && currentFragment.getTag()!=null) {
+                int currentValue = Integer.parseInt(currentFragment.getTag());
+                int activeValue = Integer.parseInt(activeFragment.getTag());
                 if (currentValue > activeValue) {
                     animArray[0] = R.anim.slide_in_right;
                     animArray[1] = R.anim.slide_out_right;
@@ -68,7 +68,6 @@ public class FilteredUserActivity extends AppCompatActivity {
                     animArray[0] = R.anim.slide_in_left;
                     animArray[1] = R.anim.slide_new;
                 }
-
             }
             fragmentManager.beginTransaction()
                     .setCustomAnimations(animArray[0], animArray[1])

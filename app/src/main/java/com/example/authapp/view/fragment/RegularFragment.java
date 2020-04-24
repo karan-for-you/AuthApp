@@ -1,5 +1,6 @@
 package com.example.authapp.view.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +8,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.authapp.R;
 import com.example.authapp.databinding.FragmentRegularBinding;
+import com.example.authapp.view.activity.MainActivity;
 import com.example.authapp.view.adapter.UsersAdapter;
 import com.example.authapp.viewmodel.RegularViewModel;
 
@@ -30,9 +31,18 @@ public class RegularFragment extends Fragment {
     private List<String> userList = new ArrayList<>();
     private RegularViewModel viewModel;
     private UsersAdapter usersAdapter;
+    private Context context;
+    private MainActivity mainActivity;
 
     public RegularFragment() {
 
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
+        this.mainActivity = (MainActivity)context;
     }
 
     @Nullable
@@ -46,12 +56,12 @@ public class RegularFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         rvUser = view.findViewById(R.id.rvRegularUsers);
-        viewModel = new ViewModelProvider(getActivity()).get(RegularViewModel.class);
+        viewModel = new ViewModelProvider(mainActivity).get(RegularViewModel.class);
         initViews();
         setupObserver();
     }
 
-    private void setupObserver(){
+    private void setupObserver() {
         viewModel.getMeLiveData("Prefixed User").observe(getViewLifecycleOwner(),
                 new Observer<List<String>>() {
                     @Override
@@ -61,11 +71,11 @@ public class RegularFragment extends Fragment {
                 });
     }
 
-    private void initViews(){
-        rvUser.addItemDecoration(new DividerItemDecoration(getContext(),
+    private void initViews() {
+        rvUser.addItemDecoration(new DividerItemDecoration(context,
                 DividerItemDecoration.HORIZONTAL));
         rvUser.setLayoutManager(new LinearLayoutManager(getContext()));
-        usersAdapter = new UsersAdapter(getContext(),userList);
+        usersAdapter = new UsersAdapter(getContext(), userList);
         rvUser.setAdapter(usersAdapter);
     }
 }
