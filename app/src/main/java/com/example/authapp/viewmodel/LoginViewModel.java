@@ -7,8 +7,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.authapp.view.activity.MainActivity;
-
 public class LoginViewModel extends ViewModel {
     public String userName = "";
     public String password = "";
@@ -19,7 +17,7 @@ public class LoginViewModel extends ViewModel {
     public LiveData<String> getLoginMessage(){
         return loginMessage;
     }
-    public void validateCredentials(MainActivity mainActivity){
+    public void validateCredentials(){
         if(userName.length() == 0){
             loginMessage.setValue("Invalid Username");
             return;

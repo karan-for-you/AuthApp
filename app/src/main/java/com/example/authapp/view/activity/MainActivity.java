@@ -51,6 +51,6 @@ public class MainActivity extends AppCompatActivity implements LoginHandler {
 
     @Override
     public void onLoginClicked() {
-        loginViewModel.validateCredentials(this);
+        loginViewModel.validateCredentials();
     }
 }
