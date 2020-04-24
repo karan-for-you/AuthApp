@@ -38,11 +38,11 @@ public class MainActivity extends AppCompatActivity implements LoginHandler {
     }
 
     private void setupObserver(){
-        loginViewModel.getLoginData().observe(this, new Observer<String>() {
+        loginViewModel.getLoginMessage().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
-                if(s.startsWith("V")) {
+                if(s.startsWith("V")){
                     startActivity(new Intent(getApplicationContext(),UsersActivity.class));
                 }
             }
@@ -51,6 +51,6 @@ public class MainActivity extends AppCompatActivity implements LoginHandler {
 
     @Override
     public void onLoginClicked() {
-        loginViewModel.validateCredentials();
+        loginViewModel.validateCredentials(this);
     }
 }

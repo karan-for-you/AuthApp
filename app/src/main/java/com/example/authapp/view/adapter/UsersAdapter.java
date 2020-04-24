@@ -47,7 +47,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
     }
 
     public void addOneUser(){
-        userData.add("Karan");
+        userData.add("User Limited");
         notifyDataSetChanged();
     }
 
