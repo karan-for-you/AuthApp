@@ -15,6 +15,10 @@ android {
     }
 
     buildTypes {
+        debug{
+            manifestPlaceholders = [hostName: "stage.smashi.tv", enableCrashReporting: "false"]
+            buildConfigField "String", "SERVER_URL", '"https://stage.smashi.tv/api/"'
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -22,6 +26,13 @@ android {
     }
     dataBinding {
         enabled = true
+    }
+
+    android {
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
     }
 
 }
@@ -38,4 +49,9 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation "android.arch.persistence.room:runtime:1.1.1"
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.3.0'
 }

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.authapp.R;
 import com.example.authapp.databinding.ActivityMainBinding;
 import com.example.authapp.handler.LoginHandler;
+import com.example.authapp.model.LoginResponse;
 import com.example.authapp.viewmodel.LoginViewModel;
 
 public class MainActivity extends AppCompatActivity implements LoginHandler {
@@ -22,7 +23,8 @@ public class MainActivity extends AppCompatActivity implements LoginHandler {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupBinding();
-        setupObserver();
+        //setupObserver();
+        setupLoginDataObserver();
     }
 
     private void setupBinding(){
@@ -38,19 +40,27 @@ public class MainActivity extends AppCompatActivity implements LoginHandler {
     }
 
     private void setupObserver(){
-        loginViewModel.getLoginMessage().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
-                if(s.startsWith("V")){
-                    startActivity(new Intent(getApplicationContext(),UsersActivity.class));
-                }
+        loginViewModel.getLoginMessage().observe(this, s -> {
+            Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+            if(s.startsWith("V")){
+                startActivity(new Intent(getApplicationContext(),UsersActivity.class));
+            }
+        });
+    }
+
+    private void setupLoginDataObserver(){
+        loginViewModel.getLoginDataResponse().observe(this, loginResponse -> {
+            if(loginResponse!=null && loginResponse.getResponseObject()!=null){
+                Toast.makeText(MainActivity.this,loginResponse.getResponseObject().getName()+" "+
+                        loginResponse.getResponseObject().getToken(),Toast.LENGTH_LONG).show();
+            }else{
+                Toast.makeText(MainActivity.this,loginResponse.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
     }
 
     @Override
     public void onLoginClicked() {
-        loginViewModel.validateCredentials();
+        loginViewModel.callLoginApi();
     }
 }
