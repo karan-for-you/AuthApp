@@ -1,6 +1,8 @@
 package com.example.authapp.viewmodel;
 
 import android.graphics.Color;
+import android.util.Log;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
@@ -25,7 +27,7 @@ import retrofit2.Response;
 public class LoginViewModel extends ViewModel implements NetworkCallResponse {
     public String userName = "";
     public String password = "";
-    public String user = "";
+    public boolean rememberMeFlag = true;
 
     private MutableLiveData<String> loginMessage = new MutableLiveData<String>();
 
@@ -33,6 +35,10 @@ public class LoginViewModel extends ViewModel implements NetworkCallResponse {
 
     public LiveData<String> getLoginMessage() {
         return loginMessage;
+    }
+
+    public LiveData<LoginResponse> getLoginDataResponse() {
+        return loginResponse;
     }
 
     public void validateCredentials() {
@@ -46,10 +52,6 @@ public class LoginViewModel extends ViewModel implements NetworkCallResponse {
         }
 
         loginMessage.setValue("Validated");
-    }
-
-    public LiveData<LoginResponse> getLoginDataResponse() {
-        return loginResponse;
     }
 
     public void callLoginApi() {
@@ -94,6 +96,14 @@ public class LoginViewModel extends ViewModel implements NetworkCallResponse {
     @Override
     public void networkFailureResponse(Boolean response, String apiTag, Throwable throwable) {
         loginResponse.setValue(null);
+    }
+
+    public void checkValue(boolean val){
+        Log.d("Switch Value",""+val);
+    }
+
+    public void checkboxValue(boolean val){
+        Log.d("Check Box",""+val);
     }
 
 }

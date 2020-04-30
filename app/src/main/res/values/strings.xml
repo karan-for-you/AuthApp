@@ -11,6 +11,7 @@
     <string name="female">Female</string>
     <string name="select_gender">Select Gender</string>
     <string name="country">Country</string>
+    <string name="remember_me">Remember Me?</string>
 
     <string-array name="countries">
         <item>Select Country</item>
