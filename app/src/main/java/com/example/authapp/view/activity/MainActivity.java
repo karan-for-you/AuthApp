@@ -1,18 +1,18 @@
 package com.example.authapp.view.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.authapp.R;
 import com.example.authapp.databinding.ActivityMainBinding;
 import com.example.authapp.handler.LoginHandler;
-import com.example.authapp.model.LoginResponse;
 import com.example.authapp.viewmodel.LoginViewModel;
 
 public class MainActivity extends AppCompatActivity implements LoginHandler {
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements LoginHandler {
         loginViewModel.getLoginMessage().observe(this, s -> {
             Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
             if(s.startsWith("V")){
-                startActivity(new Intent(getApplicationContext(),UsersActivity.class));
+                startActivity(new Intent(getApplicationContext(),ObservableActivity.class));
             }
         });
     }
@@ -53,9 +53,8 @@ public class MainActivity extends AppCompatActivity implements LoginHandler {
             if(loginResponse!=null && loginResponse.getResponseObject()!=null){
                 Toast.makeText(MainActivity.this,loginResponse.getResponseObject().getName()+" "+
                         loginResponse.getResponseObject().getToken(),Toast.LENGTH_LONG).show();
-            }else{
-                Toast.makeText(MainActivity.this,loginResponse.getMessage(),Toast.LENGTH_LONG).show();
-            }
+                startActivity(new Intent(getApplicationContext(),ObservableActivity.class));
+            }else Toast.makeText(MainActivity.this,loginResponse.getMessage(),Toast.LENGTH_LONG).show();
         });
     }
 

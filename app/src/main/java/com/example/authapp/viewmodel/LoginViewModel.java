@@ -1,9 +1,14 @@
 package com.example.authapp.viewmodel;
 
+import android.graphics.Color;
+import android.widget.TextView;
+
+import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.authapp.R;
 import com.example.authapp.model.LoginResponse;
 import com.example.authapp.services.NetworkCallResponse;
 import com.example.authapp.services.calls.LoginCallApi;
@@ -20,6 +25,7 @@ import retrofit2.Response;
 public class LoginViewModel extends ViewModel implements NetworkCallResponse {
     public String userName = "";
     public String password = "";
+    public String user = "";
 
     private MutableLiveData<String> loginMessage = new MutableLiveData<String>();
 
@@ -48,12 +54,12 @@ public class LoginViewModel extends ViewModel implements NetworkCallResponse {
 
     public void callLoginApi() {
         LoginResponse temp = new LoginResponse();
-        if (userName.length() == 0) {
+        if (userName.isEmpty()) {
             temp.setMessage("Empty Email");
             loginResponse.setValue(temp);
             return;
         }
-        if (password.length() == 0) {
+        if (password.isEmpty()) {
             temp.setMessage("Empty Password");
             loginResponse.setValue(temp);
             return;
@@ -89,4 +95,5 @@ public class LoginViewModel extends ViewModel implements NetworkCallResponse {
     public void networkFailureResponse(Boolean response, String apiTag, Throwable throwable) {
         loginResponse.setValue(null);
     }
+
 }
