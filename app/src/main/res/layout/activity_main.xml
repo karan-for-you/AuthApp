@@ -63,10 +63,10 @@
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <Switch
-        android:id="@+id/swtichToggler"
+        android:id="@+id/switchToggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Test Switch"
+        android:text="@string/test_switch"
         android:onCheckedChanged="@{(button, bool)-> viewModel.checkValue(bool)}"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox" />
@@ -77,12 +77,12 @@
         android:layout_height="wrap_content"
         android:background="@color/colorKYCWait"
         android:onClick="@{()->handler.onLoginClicked()}"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@color/colorWhite"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/swtichToggler" />
+        app:layout_constraintTop_toBottomOf="@+id/switchToggle" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

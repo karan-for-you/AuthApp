@@ -1,11 +1,8 @@
 package com.example.authapp.view.activity;
 
-import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;

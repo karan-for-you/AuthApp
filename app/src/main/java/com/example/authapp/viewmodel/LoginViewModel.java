@@ -1,16 +1,11 @@
 package com.example.authapp.viewmodel;
 
-import android.graphics.Color;
 import android.util.Log;
-import android.widget.CheckBox;
-import android.widget.TextView;
 
-import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.authapp.R;
 import com.example.authapp.model.LoginResponse;
 import com.example.authapp.services.NetworkCallResponse;
 import com.example.authapp.services.calls.LoginCallApi;
@@ -95,7 +90,9 @@ public class LoginViewModel extends ViewModel implements NetworkCallResponse {
 
     @Override
     public void networkFailureResponse(Boolean response, String apiTag, Throwable throwable) {
-        loginResponse.setValue(null);
+        LoginResponse loginResponseApi = new LoginResponse();
+        loginResponseApi.setMessage("Problem Calling API");
+        loginResponse.setValue(loginResponseApi);
     }
 
     public void checkValue(boolean val){
